@@ -3,7 +3,7 @@ class CocktailShowController {
     this.$target = $target
   }
 
-  setCurrent(){
-    this.$target.html("<h1>BEEEEEF</h1>")
+  setCurrent(cocktail){
+    CocktailView.renderDetails(this.$target, cocktail)
   }
 }

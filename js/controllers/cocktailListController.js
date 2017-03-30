@@ -14,7 +14,11 @@ class CocktailListController {
   attachListeners(){
     this.$target.on('click', 'li.cocktail', (e) => {
       e.preventDefault()
-      this.detailController.setCurrent()
+      let id = $(e.currentTarget).data('id')
+      Cocktail.find(id)
+      .then((cocktail) => {
+        this.detailController.setCurrent(cocktail)
+      })
     })
   }
 }
