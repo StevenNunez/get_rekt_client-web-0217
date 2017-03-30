@@ -19,6 +19,7 @@ class CocktailListController {
       .then((cocktail) => {
         this.detailController.setCurrent(cocktail)
       })
+
     })
   }
 }

@@ -4,6 +4,18 @@ class Cocktail {
   }
 
   static find(id){
-    return Api.getJSON(`cocktails/${id}.json`)
+    if(store.find("cocktails", id)) {
+      return new Promise((resolve) => {
+        resolve(store.find("cocktails", id))
+      })
+    } else {
+      return Api.getJSON(`cocktails/${id}.json`)
+                .then((cocktail) =>{
+                  store.add("cocktails", cocktail)
+                  return cocktail
+                })
+    }
   }
 }
+
+let store = new Store()
